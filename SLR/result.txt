@@ -1,0 +1,32 @@
+100:   i: int
+101:   j: int
+102:   cnt: int
+103:   a: array( 5, int )
+104:   t0=2*4
+105:   a[t0]=1
+106:   t1=9*11
+107:   t2 = (float)t1
+108:   t3=3.85+t2
+109:   t4= (int)t3
+110:   i=t4
+111:   j=50
+112:   cnt=0
+113:   goto 114
+114:   t5=cnt+1
+115:   cnt=t5
+116:   if i==j goto  120
+117:   goto 118
+118:   if i>j goto  120
+119:   goto 121
+120:   goto 132
+121:   if i>j goto  123
+122:   goto 128
+123:   if cnt==1 goto  125
+124:   goto 128
+125:   t6=j+1
+126:   j=t6
+127:   goto 130
+128:   t7=j-1
+129:   j=t7
+130:   goto 113
+131:   return

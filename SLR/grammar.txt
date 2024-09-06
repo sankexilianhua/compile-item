@@ -1,0 +1,54 @@
+program'    -> program
+program -> basic id ( ) block
+block   -> { decls stmts }
+decls -> decls decl
+decls -> ε
+decl -> type id ;
+type -> type [ num ]
+type -> basic
+basic -> float
+basic -> int
+stmts -> stmts M stmt
+stmts -> ε
+matched_stmt -> id = expr ;
+matched_stmt -> loc = expr ;
+expr -> loc
+loc  -> loc [ expr ]
+loc -> id [ expr ]
+stmt -> matched_stmt
+stmt -> unmatched_stmt
+matched_stmt -> if ( bool ) M matched_stmt N else M matched_stmt
+unmatched_stmt -> if ( bool ) M stmt
+unmatched_stmt -> if ( bool ) M matched_stmt N else M unmatched_stmt
+matched_stmt -> while M ( bool ) M stmt
+matched_stmt -> do M stmt while M ( bool ) ;
+matched_stmt -> break ;
+matched_stmt -> continue ;
+matched_stmt -> block
+M ->  ε
+N ->  ε
+bool -> expr rel expr
+bool -> true
+bool -> false
+bool -> bool || L bool
+L ->  ε
+bool -> bool && K bool
+K ->  ε
+bool -> ! bool
+bool -> ( bool )
+rel -> <
+rel -> >
+rel -> ==
+rel -> !=
+rel -> <=
+rel -> >=
+expr -> expr + term
+expr -> expr - term
+expr -> term
+term -> term * factor
+term -> term / factor
+term -> factor
+factor -> - factor
+factor -> ( expr )
+factor -> id
+factor -> num

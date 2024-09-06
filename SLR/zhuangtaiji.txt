@@ -1,0 +1,729 @@
+I0:
+program'->. program 
+program->. basic id ( ) block 
+basic->. float 
+basic->. int 
+
+I1:
+program'->program  .
+
+I2:
+program->basic . id ( ) block 
+
+I3:
+basic->float  .
+
+I4:
+basic->int  .
+
+I5:
+program->basic id . ( ) block 
+
+I6:
+program->basic id ( . ) block 
+
+I7:
+program->basic id ( ) . block 
+block->. { decls stmts } 
+
+I8:
+program->basic id ( ) block  .
+
+I9:
+block->{ . decls stmts } 
+decls->. decls decl 
+decls->  .
+
+I10:
+block->{ decls . stmts } 
+decls->decls . decl 
+stmts->. stmts M stmt 
+stmts->  .
+decl->. type id ; 
+type->. type [ num ] 
+type->. basic 
+basic->. float 
+basic->. int 
+
+I11:
+block->{ decls stmts . } 
+stmts->stmts . M stmt 
+M->  .
+
+I12:
+decls->decls decl  .
+
+I13:
+decl->type . id ; 
+type->type . [ num ] 
+
+I14:
+type->basic  .
+
+I15:
+block->{ decls stmts }  .
+
+I16:
+stmts->stmts M . stmt 
+stmt->. id = expr ; 
+stmt->. loc = expr ; 
+stmt->. matched_stmt 
+stmt->. unmatched_stmt 
+stmt->. while M ( bool ) M stmt 
+stmt->. do M stmt while M ( bool ) ; 
+stmt->. break ; 
+stmt->. continue ; 
+stmt->. block 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+matched_stmt->. if ( bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->. if ( bool ) M stmt 
+unmatched_stmt->. if ( bool ) M matched_stmt N else M unmatched_stmt 
+block->. { decls stmts } 
+
+I17:
+decl->type id . ; 
+
+I18:
+type->type [ . num ] 
+
+I19:
+stmts->stmts M stmt  .
+
+I20:
+stmt->id . = expr ; 
+loc->id . [ expr ] 
+
+I21:
+stmt->loc . = expr ; 
+loc->loc . [ expr ] 
+
+I22:
+stmt->matched_stmt  .
+
+I23:
+stmt->unmatched_stmt  .
+
+I24:
+stmt->while . M ( bool ) M stmt 
+M->  .
+
+I25:
+stmt->do . M stmt while M ( bool ) ; 
+M->  .
+
+I26:
+stmt->break . ; 
+
+I27:
+stmt->continue . ; 
+
+I28:
+stmt->block  .
+
+I29:
+matched_stmt->if . ( bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->if . ( bool ) M stmt 
+unmatched_stmt->if . ( bool ) M matched_stmt N else M unmatched_stmt 
+
+I30:
+decl->type id ;  .
+
+I31:
+type->type [ num . ] 
+
+I32:
+stmt->id = . expr ; 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I33:
+loc->id [ . expr ] 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I34:
+stmt->loc = . expr ; 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I35:
+loc->loc [ . expr ] 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I36:
+stmt->while M . ( bool ) M stmt 
+
+I37:
+stmt->do M . stmt while M ( bool ) ; 
+stmt->. id = expr ; 
+stmt->. loc = expr ; 
+stmt->. matched_stmt 
+stmt->. unmatched_stmt 
+stmt->. while M ( bool ) M stmt 
+stmt->. do M stmt while M ( bool ) ; 
+stmt->. break ; 
+stmt->. continue ; 
+stmt->. block 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+matched_stmt->. if ( bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->. if ( bool ) M stmt 
+unmatched_stmt->. if ( bool ) M matched_stmt N else M unmatched_stmt 
+block->. { decls stmts } 
+
+I38:
+stmt->break ;  .
+
+I39:
+stmt->continue ;  .
+
+I40:
+matched_stmt->if ( . bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->if ( . bool ) M stmt 
+unmatched_stmt->if ( . bool ) M matched_stmt N else M unmatched_stmt 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I41:
+type->type [ num ]  .
+
+I42:
+stmt->id = expr . ; 
+expr->expr . + term 
+expr->expr . - term 
+
+I43:
+expr->loc  .
+loc->loc . [ expr ] 
+
+I44:
+expr->term  .
+term->term . * factor 
+term->term . / factor 
+
+I45:
+term->factor  .
+
+I46:
+factor->- . factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I47:
+factor->( . expr ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I48:
+factor->id  .
+loc->id . [ expr ] 
+
+I49:
+factor->num  .
+
+I50:
+loc->id [ expr . ] 
+expr->expr . + term 
+expr->expr . - term 
+
+I51:
+stmt->loc = expr . ; 
+expr->expr . + term 
+expr->expr . - term 
+
+I52:
+loc->loc [ expr . ] 
+expr->expr . + term 
+expr->expr . - term 
+
+I53:
+stmt->while M ( . bool ) M stmt 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I54:
+stmt->do M stmt . while M ( bool ) ; 
+
+I55:
+matched_stmt->if ( bool . ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->if ( bool . ) M stmt 
+unmatched_stmt->if ( bool . ) M matched_stmt N else M unmatched_stmt 
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I56:
+bool->expr . rel expr 
+expr->expr . + term 
+expr->expr . - term 
+rel->. < 
+rel->. > 
+rel->. == 
+rel->. != 
+rel->. <= 
+rel->. >= 
+
+I57:
+bool->true  .
+
+I58:
+bool->false  .
+
+I59:
+bool->! . bool 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I60:
+bool->( . bool ) 
+factor->( . expr ) 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I61:
+stmt->id = expr ;  .
+
+I62:
+expr->expr + . term 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I63:
+expr->expr - . term 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I64:
+term->term * . factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I65:
+term->term / . factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I66:
+factor->- factor  .
+
+I67:
+factor->( expr . ) 
+expr->expr . + term 
+expr->expr . - term 
+
+I68:
+loc->id [ expr ]  .
+
+I69:
+stmt->loc = expr ;  .
+
+I70:
+loc->loc [ expr ]  .
+
+I71:
+stmt->while M ( bool . ) M stmt 
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I72:
+stmt->do M stmt while . M ( bool ) ; 
+M->  .
+
+I73:
+matched_stmt->if ( bool ) . M matched_stmt N else M matched_stmt 
+unmatched_stmt->if ( bool ) . M stmt 
+unmatched_stmt->if ( bool ) . M matched_stmt N else M unmatched_stmt 
+M->  .
+
+I74:
+bool->bool || . L bool 
+L->  .
+
+I75:
+bool->bool && . K bool 
+K->  .
+
+I76:
+bool->expr rel . expr 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I77:
+rel-><  .
+
+I78:
+rel->>  .
+
+I79:
+rel->==  .
+
+I80:
+rel->!=  .
+
+I81:
+rel-><=  .
+
+I82:
+rel->>=  .
+
+I83:
+bool->! bool  .
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I84:
+bool->( bool . ) 
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I85:
+expr->expr + term  .
+term->term . * factor 
+term->term . / factor 
+
+I86:
+expr->expr - term  .
+term->term . * factor 
+term->term . / factor 
+
+I87:
+term->term * factor  .
+
+I88:
+term->term / factor  .
+
+I89:
+factor->( expr )  .
+
+I90:
+stmt->while M ( bool ) . M stmt 
+M->  .
+
+I91:
+stmt->do M stmt while M . ( bool ) ; 
+
+I92:
+matched_stmt->if ( bool ) M . matched_stmt N else M matched_stmt 
+unmatched_stmt->if ( bool ) M . stmt 
+unmatched_stmt->if ( bool ) M . matched_stmt N else M unmatched_stmt 
+matched_stmt->. if ( bool ) M matched_stmt N else M matched_stmt 
+stmt->. id = expr ; 
+stmt->. loc = expr ; 
+stmt->. matched_stmt 
+stmt->. unmatched_stmt 
+stmt->. while M ( bool ) M stmt 
+stmt->. do M stmt while M ( bool ) ; 
+stmt->. break ; 
+stmt->. continue ; 
+stmt->. block 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+unmatched_stmt->. if ( bool ) M stmt 
+unmatched_stmt->. if ( bool ) M matched_stmt N else M unmatched_stmt 
+block->. { decls stmts } 
+
+I93:
+bool->bool || L . bool 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I94:
+bool->bool && K . bool 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I95:
+bool->expr rel expr  .
+expr->expr . + term 
+expr->expr . - term 
+
+I96:
+bool->( bool )  .
+
+I97:
+stmt->while M ( bool ) M . stmt 
+stmt->. id = expr ; 
+stmt->. loc = expr ; 
+stmt->. matched_stmt 
+stmt->. unmatched_stmt 
+stmt->. while M ( bool ) M stmt 
+stmt->. do M stmt while M ( bool ) ; 
+stmt->. break ; 
+stmt->. continue ; 
+stmt->. block 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+matched_stmt->. if ( bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->. if ( bool ) M stmt 
+unmatched_stmt->. if ( bool ) M matched_stmt N else M unmatched_stmt 
+block->. { decls stmts } 
+
+I98:
+stmt->do M stmt while M ( . bool ) ; 
+bool->. expr rel expr 
+bool->. true 
+bool->. false 
+bool->. bool || L bool 
+bool->. bool && K bool 
+bool->. ! bool 
+bool->. ( bool ) 
+expr->. loc 
+expr->. expr + term 
+expr->. expr - term 
+expr->. term 
+loc->. loc [ expr ] 
+loc->. id [ expr ] 
+term->. term * factor 
+term->. term / factor 
+term->. factor 
+factor->. - factor 
+factor->. ( expr ) 
+factor->. id 
+factor->. num 
+
+I99:
+matched_stmt->if ( bool ) M matched_stmt . N else M matched_stmt 
+unmatched_stmt->if ( bool ) M matched_stmt . N else M unmatched_stmt 
+stmt->matched_stmt  .
+N->  .
+
+I100:
+unmatched_stmt->if ( bool ) M stmt  .
+
+I101:
+bool->bool || L bool  .
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I102:
+bool->bool && K bool  .
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I103:
+stmt->while M ( bool ) M stmt  .
+
+I104:
+stmt->do M stmt while M ( bool . ) ; 
+bool->bool . || L bool 
+bool->bool . && K bool 
+
+I105:
+matched_stmt->if ( bool ) M matched_stmt N . else M matched_stmt 
+unmatched_stmt->if ( bool ) M matched_stmt N . else M unmatched_stmt 
+
+I106:
+stmt->do M stmt while M ( bool ) . ; 
+
+I107:
+matched_stmt->if ( bool ) M matched_stmt N else . M matched_stmt 
+unmatched_stmt->if ( bool ) M matched_stmt N else . M unmatched_stmt 
+M->  .
+
+I108:
+stmt->do M stmt while M ( bool ) ;  .
+
+I109:
+matched_stmt->if ( bool ) M matched_stmt N else M . matched_stmt 
+unmatched_stmt->if ( bool ) M matched_stmt N else M . unmatched_stmt 
+matched_stmt->. if ( bool ) M matched_stmt N else M matched_stmt 
+unmatched_stmt->. if ( bool ) M stmt 
+unmatched_stmt->. if ( bool ) M matched_stmt N else M unmatched_stmt 
+
+I110:
+matched_stmt->if ( bool ) M matched_stmt N else M matched_stmt  .
+
+I111:
+unmatched_stmt->if ( bool ) M matched_stmt N else M unmatched_stmt  .
+

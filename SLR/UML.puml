@@ -1,0 +1,56 @@
+@startuml
+
+class TextParse {
+  - productions: ArrayList<Production>
+  - predictmap: HashMap<String, String>
+  - input_cache: ArrayList<String>
+  - ac: ArrayList<String>
+  - process: DefaultTableModel
+  - deduce_str: ArrayList<Integer>
+  - tbmodel_lex_result: DefaultTableModel
+  - errorlist: DefaultTableModel
+  - ActionAndGoto: HashMap<Integer, HashMap<String, Action>>
+  - rowNumber: ArrayList<Integer>
+
+  + TextParse(input_cache: ArrayList<String>, tbmodel_lex_resultm: DefaultTableModel, actionAndGoto: HashMap, production: ArrayList<Production>, rowNumber: ArrayList<Integer>, process: DefaultTableModel, errorlist: DefaultTableModel)
+  + Parsing(): void
+  + errorRecovery(action: Action, rowcount: int, stack: ArrayList<String>): void
+  + error(): void
+}
+
+class Production {
+  - left: String
+  - right: String[]
+
+  // Constructor and getters/setters omitted for brevity
+}
+
+class Action {
+  - action: String
+  - toProject: int
+
+  // Constructor and getters/setters omitted for brevity
+}
+
+class DefaultTableModel {
+  // Implementation details omitted for brevity
+}
+
+class HashMap<K, V> {
+  // Implementation details omitted for brevity
+}
+
+class ArrayList<E> {
+  // Implementation details omitted for brevity
+}
+
+TextParse "1" -- "0..*" Production
+TextParse "1" -- "1" DefaultTableModel
+TextParse "1" -- "1" HashMap
+TextParse "1" -- "1" ArrayList
+TextParse "1" -- "1" Action
+Action "1" -- "1" HashMap
+DefaultTableModel "1" -- "1" ArrayList
+TextParse "1" -- "0..*" Integer
+
+@enduml

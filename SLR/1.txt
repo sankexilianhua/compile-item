@@ -1,0 +1,3 @@
+状态:[0, 2, 5, 6, 7, 9, 10, 11, 17]
+符号:[$, basic, id, (, ), {, decls, stmts, id]
+输入:[$, }, }, ;, num, -, id, =, id, else, ;, num, +, id, =, id, ), id, >, id, (, if, else, ;, break, ), id, ==, id, (, if, ;, num, +, id, =, id, {, ), bool, (]
